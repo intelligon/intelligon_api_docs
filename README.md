@@ -1,6 +1,6 @@
 # Intelligon API Documentation
 
-Last reviewed by: Claude Chen <claude@brickx.com>
+Last reviewed by: Claude Chen <claude@brickx.com> Apr 2022
 
 # Endpoint
 
@@ -122,7 +122,7 @@ Code: `200 OK`
 
 ## Data Overview
 
-List available fields with overview information
+List available data fields with overview information.
 
 URL: `/aqua/data/_overview`
 
@@ -191,7 +191,8 @@ Code: `200 OK`
 				"[field2 | <str>]": number,
 				"[field3 | <str>]": number,
 				...
-			}
+			}, 
+			...
 		]
 	}
 }

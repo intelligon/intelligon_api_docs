@@ -1,6 +1,6 @@
 # Intelligon API Documentation
 
-Last reviewed by: Claude Chen <claude@brickx.com> Apr 2022
+Last reviewed by: Claude Chen <claude@intelligon.com> Aug 2022
 
 # Endpoint
 
@@ -90,9 +90,10 @@ Code: `200 OK`
 
 # Aquaculture Pond Management
 
-## List Ponds
+## List Farms
 
-URL: `/aqua/ponds/`
+
+URL: `/aqua/farms`
 
 Method: `GET`
 
@@ -104,33 +105,33 @@ Code: `200 OK`
 
 ```
 {
-	"list": {
-		"id": <str>
-		"area": <number>,              # Area
-		"boundary_geojson": <geojson>, # Boundary Geojson
-		"category": <str>,
-		"sub_category": <str>,
-		"lat": "<str>",                # Shape centroid or Point Latitude
-		"lon": <str>,                  # Shape centroid or Point Longitude
-		"label": <str>,
-		"is_active": <str>,
-		"group": <str>,
-		"owner_id": <str>
+	"payload": {
+		"rows": [{
+			"farm_id": <str>,               # NOTE: this is required for requesting ponds
+			"label": <str>,                 # farm label
+			"lat": "<num>",                	# Shape centroid or Point Latitude
+			"lon": <num>,                  	# Shape centroid or Point Longitude
+			"owner_id": <str>,              # NOTE: this should be your user_id
+			"country": <str>,
+			"country_code": <number>,
+			"place": <str>,
+			"region": <str>,
+			"total_area": <num>,
+			"total_ponds": <num>,
+			"created_at": <geojson>,
+			"updated_at": <str>,
+		},...]
 	}
+
 }
 ```
 
-## Data Overview
 
-List available data fields with overview information.
+## List Ponds
 
-URL: `/aqua/data/_overview`
+URL: `/aqua/ponds?farm_id={farm_id}`
 
-Example: `/aqua/data/_overview?pond_id=b179b842-a95b-4166-b24e-214bbfff1c4e`
-
-Query string parameters:
-
-- `pond_id` (required): Pond ID
+Method: `GET`
 
 Auth required: `YES`
 
@@ -140,21 +141,40 @@ Code: `200 OK`
 
 ```
 {
-	"payload": {
-		"data": [
-			{
-				"description": <str>,
-				"field_group": <str>,
-				"field_id": <str>,
-				"field_name": <str>,
-				"field_unit": <str>,
-				"last_date_collected": <str>,
-				"rows": <number>
-			}, ...
-		]
-	}
+    "list": {
+    	"id": <str>
+    	"area": <number>,              # Area
+    	"boundary_geojson": <geojson>, # Boundary Geojson
+    	"category": <str>,
+    	"sub_category": <str>,
+    	"lat": "<str>",                # Shape centroid or Point Latitude
+    	"lon": <str>,                  # Shape centroid or Point Longitude
+    	"label": <str>,
+    	"is_active": <str>,
+    	"group": <str>,
+    	"owner_id": <str>
+    }
 }
 ```
+
+## Ponds GeoJson
+
+URL: `/aqua/ponds/_geojson?farm_id={farm_id}`
+
+Method: `GET`
+
+Auth required: `YES`
+
+Response:
+
+Code: `200 OK`
+
+```
+{
+	"geojson": <geojson content>
+}
+```
+
 
 ## Timeseries Data
 

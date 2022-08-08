@@ -45,8 +45,7 @@ Code: `200 OK`
 }
 ```
 
-Error Response
-Code: `401 UNAUTHORIZED`
+Error Response Code: `401 UNAUTHORIZED`
 
 ## Authentication method
 
@@ -113,7 +112,7 @@ Code: `200 OK`
 			"lon": <num>,                  	# Shape centroid or Point Longitude
 			"owner_id": <str>,              # NOTE: this should be your user_id
 			"country": <str>,
-			"country_code": <number>,
+			"country_code": <num>,
 			"place": <str>,
 			"region": <str>,
 			"total_area": <num>,
@@ -141,19 +140,25 @@ Code: `200 OK`
 
 ```
 {
-    "list": {
-    	"id": <str>
-    	"area": <number>,              # Area
-    	"boundary_geojson": <geojson>, # Boundary Geojson
-    	"category": <str>,
-    	"sub_category": <str>,
-    	"lat": "<str>",                # Shape centroid or Point Latitude
-    	"lon": <str>,                  # Shape centroid or Point Longitude
-    	"label": <str>,
-    	"is_active": <str>,
-    	"group": <str>,
-    	"owner_id": <str>
-    }
+  "list": [{
+  	"id": <str>
+  	"area": <number>,              # Area
+  	"boundary_geojson": <geojson>, # Boundary Geojson
+  	"category": <str>,
+  	"sub_category": <str>,
+  	"lat": "<str>",                # Shape centroid or Point Latitude
+  	"lon": <str>,                  # Shape centroid or Point Longitude
+  	"label": <str>,
+  	"is_active": <str>,
+  	"group": <str>,
+  	"owner_id": <str>,
+    "farm_id": <str>,
+    "farm_label": <str>,
+    "country": <str>,
+    "country_code": <num>,
+    "place": <str>,
+    "region": <str>,
+  }, ...]
 }
 ```
 

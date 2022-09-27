@@ -222,3 +222,40 @@ Code: `200 OK`
 	}
 }
 ```
+
+## Cycle
+
+Get cycles for a specific pond
+
+URL: `/aqua/cycles?pondId=<str>`
+
+Method: `GET`
+
+Example: `/aqua/cycles?pondId=b179b842-a95b-4166-b24e-214bbfff1c4e`
+
+Auth required: `YES`
+
+Response:
+
+Code: `200 OK`
+
+```
+{
+	"payload": {
+		"pond_id": <str>,
+		"rows": [
+			{
+				"id": <str>,
+				"pond_id": <str>,
+				"label": <str>,
+				"created": <str>,
+				"updated_at": <str>,
+				"start_date": <str>,
+				"pond_id": <str>,
+				"end_date": <str>,
+			}
+		]
+	}
+}
+```
+

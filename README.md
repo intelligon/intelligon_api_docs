@@ -91,7 +91,6 @@ Code: `200 OK`
 
 ## List Farms
 
-
 URL: `/aqua/farms`
 
 Method: `GET`
@@ -124,7 +123,6 @@ Code: `200 OK`
 
 }
 ```
-
 
 ## List Ponds
 
@@ -166,6 +164,10 @@ Code: `200 OK`
 
 URL: `/aqua/ponds/_geojson?farm_id={farm_id}`
 
+Parameters
+
+-   farm_id: Farm ID
+
 Method: `GET`
 
 Auth required: `YES`
@@ -180,14 +182,61 @@ Code: `200 OK`
 }
 ```
 
+## List data fields
+
+Get list of available field ids in order to access timeseries data
+
+URL: `/aqua/fields`
+
+Parameters: N/A
+
+Method: `GET`
+
+Auth required: `YES`
+
+Response:
+
+Code: `200 OK`
+
+```
+{
+	"payload: [
+		{
+			"description": string,
+			"field_group": string,
+			"field_id": string,
+			"field_name": string,
+			"field_sub_group": string,
+			"field_type": string,
+			"field_unit": string,
+			"is_derived": bool,
+			"position": number
+		}, ...
+	]
+}
+```
+
+NOTE:
+
+field_id: this is what we use in timeseries data API
 
 ## Timeseries Data
 
 Get timeseries data
 
-URL: `/aqua/data/[pond_id|<str>]?fields=<str>`
+NOTE: Please refer to "Fields" section to get full list of available field ids
 
-Example: `/aqua/data/b179b842-a95b-4166-b24e-214bbfff1c4e?fields=weight,ph`
+URL: `/aqua/data/[pond_id|<str>]?fields=<str>&from=<str>&to=<str>`
+
+Parameters:
+
+-   fields: list of field ids separated by comma signs
+-   [OPTIONAL] from: starting date of timeseries
+-   [OPTIONAL] to: ending date of timeseries
+
+Method: `GET`
+
+Example: `/aqua/data/b179b842-a95b-4166-b24e-214bbfff1c4e?fields=weight,ph&from=2017-01-01&to=2018-01-01`
 
 Auth required: `YES`
 
@@ -216,7 +265,7 @@ Code: `200 OK`
 				"[field2 | <str>]": number,
 				"[field3 | <str>]": number,
 				...
-			}, 
+			},
 			...
 		]
 	}
@@ -258,4 +307,3 @@ Code: `200 OK`
 	}
 }
 ```
-

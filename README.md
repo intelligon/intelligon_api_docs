@@ -202,15 +202,15 @@ Code: `200 OK`
 {
 	"payload: [
 		{
-			"description": string,
-			"field_group": string,
-			"field_id": string,
-			"field_name": string,
-			"field_sub_group": string,
-			"field_type": string,
-			"field_unit": string,
-			"is_derived": bool,
-			"position": number
+			"description": <str>,
+			"field_group": <str>,
+			"field_id": <str>,
+			"field_name": <str>,
+			"field_sub_group": <str>,
+			"field_type": <str>,
+			"field_unit": <str>,
+			"is_derived": <bool>,
+			"position": <number>
 		}, ...
 	]
 }
@@ -261,9 +261,9 @@ Code: `200 OK`
 		"rows": [
 			{
 				"datetime": <str>
-				"[field1 | <str>]": number,
-				"[field2 | <str>]": number,
-				"[field3 | <str>]": number,
+				"[field1 | <str>]": <number>,
+				"[field2 | <str>]": <number>,
+				"[field3 | <str>]": <number>,
 				...
 			},
 			...
